@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>To-Do List con CDI y PrimeFaces</title>
+</h:head>
+<h:body>
+    <h:form id="form">
+        <p:growl id="messages" showDetail="true" />
+
+        <p:panel header="Agregar tarea">
+            <p:inputText value="#{taskController.task.description}"
+                         placeholder="Nueva tarea" />
+            <p:commandButton value="Agregar"
+                             action="#{taskController.addTask}"
+                             update="tasks messages"/>
+        </p:panel>
+
+        <p:panel header="Lista de tareas">
+            <p:dataTable value="#{taskController.tasks}" var="t" id="tasks">
+                <p:column headerText="Descripción">
+                    #{t.description}
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>
