@@ -13,7 +13,7 @@ import java.util.List;
 @SessionScoped
 public class TaskController implements Serializable {
 
-    private Task task = new Task(); // ✅ propiedad que te faltaba
+    private Task task = new Task();
 
     @Inject
     private TaskService service;
@@ -32,6 +32,6 @@ public class TaskController implements Serializable {
 
     public void addTask() {
         service.addTask(task);
-        task = new Task(); // limpia el campo después de agregar
+        task = new Task();
     }
 }
